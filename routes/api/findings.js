@@ -9,4 +9,8 @@ router
   .get(findingsController.findAll)
   .post(passport.authenticate('jwt', {session: false}), findingsController.create);
 
+router
+  .route("/:id")
+  // .get(postController.findById)
+  .get(passport.authenticate('jwt', {session: false}), findingsController.findPostsByUser)
 module.exports = router; 

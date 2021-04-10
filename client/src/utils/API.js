@@ -57,7 +57,7 @@ class API {
   }
 
   loadPredictions() {
-    return this.axios.get("/api/predictions");
+    return this.axios.get("/api/predictions/");
   }
 
 }

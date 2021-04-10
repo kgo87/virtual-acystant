@@ -1,6 +1,6 @@
 import React from "react";
 import * as tf from "@tensorflow/tfjs";
-import { Container, Grid, makeStyles, Button, Input } from "@material-ui/core";
+import { Container, Grid, makeStyles, Button, Input, CircularProgress } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store/index";
 import API from "../utils/API";
@@ -19,11 +19,26 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
   },
   title: {
-    padding: "10px",
+    padding: "5px",
+    fontSize: "2.5em",
+    color: colors.superLightGrey
+  },
+  paragraph: {
+    padding: "15px 15px 15px 0px",
+    borderRadius: "5px",
+    fontSize: "1.25em",
+    color: colors.superLightGrey
+  },
+  liEl: {
+    padding: "5px 5px 5px 0px",
+    borderRadius: "5px",
+    fontSize: "1.25em",
+    color: colors.superLightGrey
   },
   image: {
-    maxWidth: "400px",
+    maxWidth: "600px",
     maxHeight: "auto",
+    borderRadius: 25
   },
   uploader: {
     marginBottom: "20px",
@@ -110,6 +125,7 @@ export default function FileUpload() {
     try {
       const savedResults = await API.savePredictions({ findings });
       console.log(savedResults);
+      alert("Results saved!")
     } catch (error) {
       console.log(error);
     }
@@ -166,10 +182,9 @@ export default function FileUpload() {
             {result && !predicting && (
               <>
                 {result && (
-                  <h3>
+                  <h3 className={classes.paragraph}>
                     {" "}
-                    Please click Predict button and wait while your image is
-                    being processed
+                    Assess your skin conditions
                   </h3>
                 )}
                 {result && (
@@ -182,18 +197,18 @@ export default function FileUpload() {
                     }}
                   >
                     {" "}
-                    Predict
+                    Assess
                   </Button>
                 )}
               </>
             )}
-            {predicting && !findings && <h3>Processing results</h3>}
+            {predicting && !findings && <h3 className={classes.paragraph}>Processing results</h3>}
           </Grid>
           <Grid item xs>
-            {findings && <h1> Findings are: </h1>}
+            {findings && <h1 className={classes.title}> Skin Assessment Results: </h1>}
             {findings &&
               findings.map((item, index) => (
-                <li key={index}>
+                <li className={classes.liEl} key={index}>
                   {" "}
                   {item.className} with a probability of{" "}
                   {(item.probability * 100).toFixed(3) + "%"}
@@ -226,7 +241,7 @@ export default function FileUpload() {
             {/* once findings are rendered build out the wikipedia results tab*/}
             {findings && <h1 className={classes.title}> Wikipedia lookup: </h1>}
             {findings && (
-              <li>
+              <li className={classes.liEl}>
                 Wikipedia description of {findings[0].className}:
                 {findings && (
                   <Button
@@ -245,7 +260,7 @@ export default function FileUpload() {
               </li>
             )}
             {findings && (
-              <li>
+              <li className={classes.liEl}>
                 Wikipedia description of {findings[1].className}:
                 {findings && (
                   <Button
@@ -264,7 +279,7 @@ export default function FileUpload() {
               </li>
             )}
             {findings && (
-              <li>
+              <li className={classes.liEl}>
                 Wikipedia description of {findings[2].className}:
                 {findings && (
                   <Button
@@ -288,7 +303,7 @@ export default function FileUpload() {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             {findings && showMore && !showMore1 && !showMore2 && (
-              <h1> Description of {findings[0].className} </h1>
+              <h1 className={classes.title}> Description of {findings[0].className} </h1>
             )}
           </Grid>
           <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
@@ -307,7 +322,7 @@ export default function FileUpload() {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             {findings && !showMore && showMore1 && !showMore2 && (
-              <h1> Description of {findings[1].className} </h1>
+              <h1 className={classes.title}> Description of {findings[1].className} </h1>
             )}
           </Grid>
           <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>
@@ -326,7 +341,7 @@ export default function FileUpload() {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             {findings && !showMore && !showMore1 && showMore2 && (
-              <h1> Description of {findings[2].className} </h1>
+              <h1 className={classes.title}> Description of {findings[2].className} </h1>
             )}
           </Grid>
           <Grid item xs={12} sm={6} style={{ marginWidth: "10px" }}>

@@ -15,10 +15,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
+import FaceIcon from '@material-ui/icons/Face';
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import GroupIcon from "@material-ui/icons/Group";
 import { Route, Switch, Link } from "react-router-dom";
 import FileUpload from "../components/FileUpload";
+import LoadResults from "../components/LoadResults";
 import colors from "../components/colors";
 import Home from "./HomePage";
 import Doctor from "./DoctorPage";
@@ -212,6 +214,18 @@ export default function Main() {
             </ListItem>
           </Link>
           <Link
+            to={"/loadResults"}
+            className={classes.linkStyle}
+            onClick={handleDrawerClose}
+          >
+            <ListItem button key={"My Results"}>
+              <ListItemIcon>
+                <FaceIcon />
+              </ListItemIcon>
+              <ListItemText primary={"My Results"} />
+            </ListItem>
+          </Link>
+          <Link
             to={"/doctor"}
             className={classes.linkStyle}
             onClick={handleDrawerClose}
@@ -239,6 +253,7 @@ export default function Main() {
           <Route exact path='/about' component={About} />
           {/* <Route exact path='/fileUpload' component={FileUpload} /> */}
           <Route exact path='/fileUpload' component={FileUpload} />
+          <Route exact path='/loadResults' component={LoadResults} />
         </Switch>
         {/* <Footer /> */}
       </main>

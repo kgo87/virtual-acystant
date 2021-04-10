@@ -4,20 +4,40 @@ import {
   Container,
   makeStyles,
 } from "@material-ui/core";
+import colors from "./colors";
 import API from "../utils/API";
 import "../index.css";
 
 const useStyles = makeStyles((theme) => ({
   searchBar: {
-    marginTop: theme.spacing(2),
-    paddingTop: theme.spacing(2),
+    marginTop: theme.spacing(15),
+    paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
-
+    backgroundColor: colors.blue2,
     marginBottom: theme.spacing(15),
     borderRadius: "5px",
   },
   title: {
-    padding: "10px",
+    padding: "5px",
+    fontSize: "2.5em",
+    color: colors.superLightGrey
+  },
+  subtitle: {
+    padding: "5px",
+    fontSize: "1.5em",
+    color: colors.superLightGrey
+  },
+  paragraph: {
+    padding: "15px 15px 15px 0px",
+    borderRadius: "5px",
+    fontSize: "1.25em",
+    color: colors.superLightGrey
+  },
+  liEl: {
+    padding: "5px 5px 5px 0px",
+    borderRadius: "5px",
+    fontSize: "1.25em",
+    color: colors.superLightGrey
   },
   image: {
     maxWidth: "400px",
@@ -45,7 +65,7 @@ export default function LoadResults() {
 
   return (
     <Container maxWidth='lg' className={classes.searchBar}>
-      <h1>All Saved Results</h1>
+      <h1 className={classes.title}>All Saved Results</h1>
       {results.length ? (
         <div>
           {results.map((result) => (
@@ -56,18 +76,18 @@ export default function LoadResults() {
               key={result._id}
             >
               <Grid item xs={12} sm={6}>
-                <h4>Saved Result as of {result.date.slice(0, -14)} </h4>
+                <h4 className={classes.subtitle}>Saved Result as of {result.date.slice(0, -14)} </h4>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <li>
+                <li className={classes.liEl}>
                   {result.findings[0].className} with probability{" "}
                   {(result.findings[0].probability * 100).toFixed(3)} %
                 </li>
-                <li>
+                <li className={classes.liEl}>
                   {result.findings[1].className} with probability{" "}
                   {(result.findings[1].probability * 100).toFixed(3)} %
                 </li>
-                <li>
+                <li className={classes.liEl}>
                   {result.findings[2].className} with probability{" "}
                   {(result.findings[2].probability * 100).toFixed(3)} %
                 </li>

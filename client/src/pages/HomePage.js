@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
 const Home = () => {
   const [state] = useStoreContext();
   const classes = useStyles();
-  const [show, toggleShow] = React.useState(true);
+  // const [show, toggleShow] = React.useState(true);
   return (
     <>
       <HeaderCard
@@ -28,7 +28,7 @@ const Home = () => {
       />
 
       <FileUpload />
-      <Container maxWidth='lg'>
+      {/* <Container maxWidth='lg'>
         <Button
           variant='contained'
           className={classes.buttonStyle}
@@ -36,8 +36,8 @@ const Home = () => {
         >
           saved results: {show ? "hide" : "show"}
         </Button>
-      </Container>
-      {show && <LoadResults />}
+      </Container> */}
+      {/* {show && <LoadResults />} */}
     </>
   );
 };
