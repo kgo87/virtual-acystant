@@ -202,7 +202,7 @@ export default function FileUpload() {
                 )}
               </>
             )}
-            {predicting && !findings && <h3 className={classes.paragraph}>Processing results</h3>}
+            {predicting && !findings && <h3 className={classes.paragraph}>Processing results. Please wait</h3>}
           </Grid>
           <Grid item xs>
             {findings && <h1 className={classes.title}> Skin Assessment Results: </h1>}
