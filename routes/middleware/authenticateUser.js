@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const passport = require('passport');
 
 const authenticateUser = passport.authenticate('jwt', { session: false });

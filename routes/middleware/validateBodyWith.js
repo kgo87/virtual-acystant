@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const mapValidationErrors = errors => errors.reduce( (errors, {field, message}) => ({ ...errors, [field]: message }), {} );
 
 const validateBodyWith = validator => ( req, res, next ) => {
