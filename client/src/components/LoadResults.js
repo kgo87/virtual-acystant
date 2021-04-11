@@ -97,7 +97,7 @@ export default function LoadResults() {
           <br></br>
         </div>
       ) : (
-        <p className='search__form--alert'>
+        <p className= {classes.paragraph}>
           It looks like you don't have any saved results!
         </p>
       )}

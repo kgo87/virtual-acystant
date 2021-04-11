@@ -48,8 +48,8 @@ No installation required
 
 ## Usage
 
-* Live application: https://virtual-acystant.herokuapp.com/
-* Repository: https://github.com/themancalledzac/virtual-acystant
+* Live application: https://virtual-acystant-kat.herokuapp.com/
+* Repository: https://github.com/kgo87/virtual-acystant
 
 To use the application, users must first sign up with an email and password, then sign in to the application.
 
