@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const validatorFactory = require("./validatorFactory");
 
 const registerValidator = validatorFactory({
