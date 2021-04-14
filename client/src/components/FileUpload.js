@@ -1,6 +1,6 @@
 import React from "react";
 import * as tf from "@tensorflow/tfjs";
-import { Container, Grid, makeStyles, Button, Input, CircularProgress } from "@material-ui/core";
+import { Container, Grid, makeStyles, Button, Input, LinearProgress } from "@material-ui/core";
 import colors from "./colors";
 import { useStoreContext } from "../store/index";
 import API from "../utils/API";
@@ -202,7 +202,9 @@ export default function FileUpload() {
                 )}
               </>
             )}
-            {predicting && !findings && <h3 className={classes.paragraph}>Processing results. Please wait</h3>}
+            <br></br>
+            {/* {predicting && !findings && <p className = {classes.paragraph}>Please wait </p>}  */}
+            {predicting && !findings && <LinearProgress value = {predicting} />}
           </Grid>
           <Grid item xs>
             {findings && <h1 className={classes.title}> Skin Assessment Results: </h1>}
